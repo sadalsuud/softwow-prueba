@@ -14,6 +14,10 @@ class PostController extends Controller
      */
     function __construct()
     {
+        $this->middleware('permission:post-list|product-create|product-edit|product-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:post-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:post-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:post-delete', ['only' => ['destroy']]);
     }
 
     /**
@@ -24,7 +28,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::latest()->paginate(5);
-        return view('post.index', compact('posts'))
+        return view('posts.index', compact('posts'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
