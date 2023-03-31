@@ -7,7 +7,7 @@
                 <h2>Post</h2>
             </div>
             <div class="pull-right">
-                @can('product-create')
+                @can('post-create')
                     <a class="btn btn-success" href="{{ route('posts.create') }}"> Publique un nuevo post </a>
                 @endcan
             </div>
@@ -23,16 +23,16 @@
 
     <table class="table table-bordered">
         <tr>
-            <th>No</th>
-            <th>Name</th>
-            <th>Details</th>
-            <th width="280px">Action</th>
+            <th>#</th>
+            <th>Título</th>
+            <th>Contenido</th>
+            <th width="280px">Acciones</th>
         </tr>
         @foreach ($posts as $unPost)
             <tr>
                 <td>{{ ++$i }}</td>
-                <td>{{ $unPost->name }}</td>
-                <td>{{ $unPost->detail }}</td>
+                <td>{{ $unPost->titulo }}</td>
+                <td>{{ $unPost->contenido }}</td>
                 <td>
                     <form action="{{ route('posts.destroy',$unPost->id) }}" method="POST">
                         <a class="btn btn-info" href="{{ route('posts.show',$unPost->id) }}">Listar</a>
