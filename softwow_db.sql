@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 30, 2023 at 06:22 PM
+-- Generation Time: Mar 30, 2023 at 07:58 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -72,6 +72,15 @@ CREATE TABLE `model_has_permissions` (
   `model_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `model_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `model_has_permissions`
+--
+
+INSERT INTO `model_has_permissions` (`permission_id`, `model_type`, `model_id`) VALUES
+(5, 'App\\Models\\User', 9),
+(6, 'App\\Models\\User', 9),
+(7, 'App\\Models\\User', 9);
 
 -- --------------------------------------------------------
 
@@ -167,6 +176,13 @@ CREATE TABLE `posts` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `titulo`, `contenido`, `usuario_id`, `created_at`, `updated_at`) VALUES
+(1, 'El maravillosa libreria spatie', 'hay mucho por aprender pero esta tarde definitivamente fue muy provechosa...', NULL, '2023-03-31 05:49:39', '2023-03-31 05:49:39');
+
 -- --------------------------------------------------------
 
 --
@@ -211,8 +227,11 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (3, 1),
 (4, 1),
 (5, 1),
+(5, 2),
 (6, 1),
+(6, 2),
 (7, 1),
+(7, 2),
 (8, 1);
 
 -- --------------------------------------------------------
@@ -237,8 +256,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(8, 'softwow', 'test@gmail.com', NULL, '$2y$10$U.Z/hmvW6mVRaeUZ43nqw.R0DEITHs1a9igDsNS97VRS9SgYgaDuu', NULL, '2023-03-31 03:07:26', '2023-03-31 03:07:26'),
-(9, 'Daniel Mendez', 'lacasadelduende11@gmail.com', NULL, '$2y$10$63u0X1kgEoiUTy22zVVdD.WmGP.kM.VqrdVEZlqEU1GVq9wrT5uFG', NULL, '2023-03-31 03:52:07', '2023-03-31 04:03:20');
+(8, 'softwow', 'test@gmail.com', NULL, '$2y$10$U.Z/hmvW6mVRaeUZ43nqw.R0DEITHs1a9igDsNS97VRS9SgYgaDuu', 'E2xV4U2Ym4FRBdwto52OG3jbbOXg4tNcxDuOVqdZbkbK8iDTHR9nwtC0K2bd', '2023-03-31 03:07:26', '2023-03-31 03:07:26'),
+(9, 'Daniel Mendez', 'lacasadelduende11@gmail.com', NULL, '$2y$10$63u0X1kgEoiUTy22zVVdD.WmGP.kM.VqrdVEZlqEU1GVq9wrT5uFG', 'bOc2Fe7IdOA05l79bV7hKS2XB1xaUfkpWVQqLIzzL7k5VRTluqFLblkcw62N', '2023-03-31 03:52:07', '2023-03-31 04:03:20');
 
 --
 -- Indexes for dumped tables
@@ -352,7 +371,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `roles`
